@@ -7,7 +7,7 @@ class Player
 
   @@draw_index=0
 
-  attr_accessor :balance, :cards, :name
+  attr_accessor :balance, :cards, :name, :score
   #through self. in init -- writer is needed, through @ -- not
   #change name to reader when finished
   #if name will be needed for dealer, delete intro, bring back init(name)
@@ -48,8 +48,13 @@ class Player
   def draw_one(cards) #get 1 card #change cards to deck and vise versa
     self.cards << cards.deck[self.class.draw_index]
     self.class.draw_index+=1
-
   end
 
-
+  def scores #method name and variable name should differ to not get stack level too deep
+    self.score = []
+    self.cards.each do |card|
+      self.score << card.points
+    end
+    self.score.sum
+  end
 end

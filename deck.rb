@@ -47,7 +47,7 @@ class Deck
   end
 
   def shuffle
-    @deck.shuffle
+    @deck = @deck.shuffle # .shuffle doesn't change original array
   end
 
 end

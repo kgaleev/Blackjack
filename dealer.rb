@@ -2,6 +2,6 @@
 
 class Dealer < Player
   def initialize
-    super(name='Dealer')
+    super#(name='Dealer')
   end
 end

@@ -1,11 +1,24 @@
 # frozen_string_literal: true
 
-puts "Welcome to the club, buddy!"
+class Game
+
+  # attr_reader :name
+  def welcome
+    puts "Welcome to the club, buddy!"
+    # puts "What's your name?"
+    # name = gets.chomp
+    # @name = name
+  end
+
+end
+
+Game.new.welcome
+#puts "Welcome to the club, buddy!"
 # What's your name? (if Tony - Fuck you, Tony! Get your stinky ass to the table)
 
 #put it (^v) as method in Player class
-puts "What's your name?"
-name = gets.chomp
+# puts "What's your name?"
+# name = gets.chomp
 
 # two classes: Dealer (ai) & Player (user)
 # class Deck with cards as instances (objects). Shuffle method for not creating new deck every round. Deck as array
@@ -29,7 +42,19 @@ require_relative 'dealer'
 require_relative 'deck'
 require_relative 'card'
 
-a=Player.new(name)
-puts a.inspect
-b=Dealer.new
-puts b.inspect
+p=Player.new
+puts p.inspect
+d=Dealer.new
+puts d.inspect
+
+de = Deck.new
+de.ptc
+de.shuffle
+puts de.deck.length
+
+p.draw_one(de)
+p.draw_two(de)
+puts p.cards
+
+d.draw_one(de)
+d.draw_two(de)

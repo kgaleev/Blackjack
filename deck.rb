@@ -11,7 +11,7 @@ class Deck
 
   #name.deck[number].rank to get rank
   def initialize
-    @deck = []
+    @deck = [] #change deck to cards
     RANKS.each do |rank|
       SUITS.each do |suit|
         @deck << Card.new(rank, suit, points)

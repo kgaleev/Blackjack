@@ -7,7 +7,7 @@ class Player
 
   @@draw_index=0
 
-  attr_accessor :balance, :cards, :name, :score
+  attr_accessor :balance, :cards, :name, :scores
   #through self. in init -- writer is needed, through @ -- not
   #change name to reader when finished
   #if name will be needed for dealer, delete intro, bring back init(name)
@@ -50,11 +50,14 @@ class Player
     self.class.draw_index+=1
   end
 
-  def scores #method name and variable name should differ to not get stack level too deep
-    self.score = []
-    self.cards.each do |card|
-      self.score << card.points
+  def current_score #method name and variable name should differ to not get stack level too deep
+    self.scores = []
+    cards.each do |card|
+      self.scores << card.points
     end
-    self.score.sum
+    while scores.sum > 21 && (scores.include? 11)
+      self.scores[scores.index {|score| score == 11}] = 1
+    end
+    scores.sum
   end
 end

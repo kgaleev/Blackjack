@@ -55,6 +55,8 @@ puts de.deck.length
 p.draw_one(de)
 p.draw_two(de)
 puts p.cards
+p.current_score
 
 d.draw_one(de)
 d.draw_two(de)
+puts d.current_score

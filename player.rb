@@ -11,11 +11,12 @@ class Player
   #through self. in init -- writer is needed, through @ -- not
   #change name to reader when finished
   #if name will be needed for dealer, delete intro, bring back init(name)
-    def initialize #(name)
-      intro
+    def initialize(name)
+      #intro
       # self.name = name.capitalize
       self.balance = 100
       self.cards = []
+      @name = name
 
     end
 

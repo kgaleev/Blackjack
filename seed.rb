@@ -2,17 +2,18 @@
 
 class Game
 
-  # attr_reader :name
-  def welcome
+  attr_reader :name
+  def greeting
     puts "Welcome to the club, buddy!"
-    # puts "What's your name?"
-    # name = gets.chomp
-    # @name = name
+    puts "What's your name?"
+    name = gets.chomp
+    @name = name.capitalize
   end
 
 end
 
-Game.new.welcome
+game = Game.new
+game.greeting
 #puts "Welcome to the club, buddy!"
 # What's your name? (if Tony - Fuck you, Tony! Get your stinky ass to the table)
 
@@ -42,7 +43,7 @@ require_relative 'dealer'
 require_relative 'deck'
 require_relative 'card'
 
-p=Player.new
+p=Player.new(game.name)
 puts p.inspect
 d=Dealer.new
 puts d.inspect

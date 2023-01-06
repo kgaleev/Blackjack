@@ -10,7 +10,7 @@ module Menu
     @choice = choice
     case @choice
     when '1'
-      self.draw_one(ObjectSpace.each_object(Deck).to_a[0])
+      self.draw_one(ObjectSpace.each_object(Deck).to_a[0]) # if i want module to see object from other class (where module isn't included), need to put that object somewhere
     when '2'
       puts "Dealer's turn"
     when '3'

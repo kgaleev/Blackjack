@@ -25,11 +25,13 @@
 # 5. player knows his points: 2-10 = same num, pictures = 10, ace = 1 or 11 (closest to 21 or lowest to 21+) (objects added from deck through << and points taken from object)
 # 6. player and dealer put 10$ in bank (-10, +10; Bank as Struct)
 # 7. player's turn with 3 choices: skip, add 1 card, open hand (round ends)
-# 8. dealer's turn with 2 choises: skip (if points>17), add 1 card (if points<17)
+# 8. dealer's turn with 2 choices: skip (if points>=17), add 1 card (if points<17)
 # 9. hands are opened, if both have 3 cards or if player chooses to open hand (max hand is 3 cards)
 # 10. game results shown: closest to 21 wins; if player has >21, he loses; if equal points - round draw
 # 11. winner gets money from bank
 # 12. ask player if he wants 1 more round or end game
+
+# add condition to stop game, when player's or dealer's funds == 0
 
 require_relative 'game'
 require_relative 'menu'
@@ -40,20 +42,24 @@ require_relative 'card'
 
 game = Game.new
 game.greeting
-player=Player.new(game.name)
-puts player.inspect
-dealer=Dealer.new
-puts dealer.inspect
-deck = Deck.new
-deck.ptc
-deck.shuffle
-player.draw_two(deck)
-puts player.cards.inspect
-dealer.draw_two(deck)
-player.current_score
-player.place_bet
-dealer.place_bet
-player.choose
-dealer.draw_one(deck)
-dealer.draw_two(deck)
-puts dealer.current_score
+# player=Player.new(game.name)
+# puts player.inspect
+# dealer=Dealer.new
+# puts dealer.inspect
+
+
+# deck = Deck.new
+# deck.ptc
+# deck.shuffle
+# player.draw_two(deck)
+game.player.draw_two(game.deck)
+# dealer.draw_two(deck)
+game.dealer.draw_two(game.deck)
+game.player.current_score
+game.player.place_bet
+game.dealer.place_bet
+game.player.choose
+# dealer.draw_one(deck)
+# dealer.draw_two(deck)
+puts game.dealer.current_score
+binding.irb

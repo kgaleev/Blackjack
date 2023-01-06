@@ -17,6 +17,8 @@ class Deck
         @deck << Card.new(rank, suit, points)
       end
     end
+    ptc
+    shuffle
   end
 
   def ptc # points_to_cards

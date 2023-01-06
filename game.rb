@@ -3,11 +3,31 @@
 class Game
 
   attr_reader :name, :choice
+
+  def deck
+    @deck ||= Deck.new # need only one deck
+  end
+
+  def new_round
+    @deck.shuffle
+    player.class.draw_index=0
+    player.cards=[]
+  end
+
   def greeting
     puts "Welcome to the club, buddy!"
     puts "What's your name?"
     name = gets.chomp
     @name = name.capitalize
+  end
+
+  def player
+    @player ||= Player.new(name)
+    # puts @player.inspect
+  end
+  def dealer
+    @dealer ||= Dealer.new
+    # puts @dealer.inspect
   end
 
   def choose
@@ -34,6 +54,7 @@ require_relative 'dealer'
 require_relative 'deck'
 require_relative 'card'
 
+=begin
 # 1. player picks name (gets)
 game = Game.new
 game.greeting
@@ -45,12 +66,12 @@ dealer=Dealer.new
 #puts dealer.inspect
 
 # 3. player gets 2 cards, opened to player
-deck = Deck.new
-deck.ptc
-deck.shuffle
+# deck = Deck.new
+# deck.ptc
+# deck.shuffle
 #puts deck.deck.length
 
-player.draw_two(deck)
+player.draw_two(game.deck)
 puts player.cards.inspect
 
 # 4. dealer gets 2 cards, closed to player
@@ -66,8 +87,9 @@ dealer.place_bet
 # 7. player's turn with 3 choices: skip, add 1 card, open hand (round ends)
 player.choose
 
-#8. dealer's turn with 2 choises: skip (if points>17), add 1 card (if points<17)
+#8. dealer's turn with 2 choices: skip (if points>=17), add 1 card (if points<17)
 
-#binding.irb
+binding.irb
 
 # delete case-when from module, make case-when in game class with: when 1; player.draw_one(deck)
+=end

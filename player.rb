@@ -2,6 +2,7 @@
 
 class Player
 
+  include Menu
   def self.draw_index=(draw_index); @@draw_index = draw_index; end #writer
   def self.draw_index; @@draw_index; end #reader
 
@@ -40,14 +41,14 @@ class Player
     end
   end
 
-  def draw_two(cards) #get 2 cards
-    2.times do draw_one(cards)
+  def draw_two(all_cards) #get 2 cards
+    2.times do draw_one(all_cards)
 
     end
   end
 
-  def draw_one(cards) #get 1 card #change cards to deck and vise versa
-    self.cards << cards.deck[self.class.draw_index]
+  def draw_one(deck_object) #get 1 card #change all_cards to deck and vise versa
+    self.cards << deck_object.deck[self.class.draw_index]
     self.class.draw_index+=1
   end
 

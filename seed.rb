@@ -1,25 +1,18 @@
 # frozen_string_literal: true
 
-class Game
+# class Game
+#
+#   attr_reader :name
+#   def greeting
+#     puts "Welcome to the club, buddy!"
+#     puts "What's your name?"
+#     name = gets.chomp
+#     @name = name.capitalize
+#   end
+#
+# end
 
-  attr_reader :name
-  def greeting
-    puts "Welcome to the club, buddy!"
-    puts "What's your name?"
-    name = gets.chomp
-    @name = name.capitalize
-  end
-
-end
-
-game = Game.new
-game.greeting
-#puts "Welcome to the club, buddy!"
 # What's your name? (if Tony - Fuck you, Tony! Get your stinky ass to the table)
-
-#put it (^v) as method in Player class
-# puts "What's your name?"
-# name = gets.chomp
 
 # two classes: Dealer (ai) & Player (user)
 # class Deck with cards as instances (objects). Shuffle method for not creating new deck every round. Deck as array
@@ -37,27 +30,30 @@ game.greeting
 # 10. game results shown: closest to 21 wins; if player has >21, he loses; if equal points - round draw
 # 11. winner gets money from bank
 # 12. ask player if he wants 1 more round or end game
-#
+
+require_relative 'game'
+require_relative 'menu'
 require_relative 'player'
 require_relative 'dealer'
 require_relative 'deck'
 require_relative 'card'
 
-p=Player.new(game.name)
-puts p.inspect
-d=Dealer.new
-puts d.inspect
-
-de = Deck.new
-de.ptc
-de.shuffle
-puts de.deck.length
-
-p.draw_one(de)
-p.draw_two(de)
-puts p.cards
-p.current_score
-
-d.draw_one(de)
-d.draw_two(de)
-puts d.current_score
+game = Game.new
+game.greeting
+player=Player.new(game.name)
+puts player.inspect
+dealer=Dealer.new
+puts dealer.inspect
+deck = Deck.new
+deck.ptc
+deck.shuffle
+player.draw_two(deck)
+puts player.cards.inspect
+dealer.draw_two(deck)
+player.current_score
+player.place_bet
+dealer.place_bet
+player.choose
+dealer.draw_one(deck)
+dealer.draw_two(deck)
+puts dealer.current_score

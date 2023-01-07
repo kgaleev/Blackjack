@@ -12,6 +12,7 @@ class Game
     @deck.shuffle
     player.class.draw_index=0
     player.cards=[]
+    dealer.cards=[]
   end
 
   def greeting
@@ -37,11 +38,21 @@ class Game
     @choice = choice
     case @choice
     when '1'
-      self.draw_one(cards)
+      player.draw_one(deck)
     when '2'
-      puts "#{self.name}'s turn"
+      puts "Dealer's turn"
+      dealer.make_turn(deck)
     when '3'
-      self.cards
+      puts player.cards.inspect
+      puts dealer.cards.inspect
+    # when '1'
+    #   draw_one(deck)
+    # when '2'
+    #   puts "Dealer's turn"
+    #   dealer.make_turn(deck)
+    # when '3'
+    #   puts cards.inspect
+    #   puts dealer.cards.inspect
     end
   end
 
@@ -88,6 +99,7 @@ dealer.place_bet
 player.choose
 
 #8. dealer's turn with 2 choices: skip (if points>=17), add 1 card (if points<17)
+dealer.make_turn
 
 binding.irb
 

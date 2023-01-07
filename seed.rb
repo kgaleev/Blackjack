@@ -34,7 +34,7 @@
 # add condition to stop game, when player's or dealer's funds == 0
 
 require_relative 'game'
-require_relative 'menu'
+# require_relative 'menu'
 require_relative 'player'
 require_relative 'dealer'
 require_relative 'deck'
@@ -58,8 +58,9 @@ game.dealer.draw_two(game.deck)
 game.player.current_score
 game.player.place_bet
 game.dealer.place_bet
-game.player.choose
+game.choose
+#game.player.choose
 # dealer.draw_one(deck)
 # dealer.draw_two(deck)
-puts game.dealer.current_score
+game.dealer.current_score
 binding.irb

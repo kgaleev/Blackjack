@@ -10,9 +10,9 @@ class Game
 
   def new_round
     @deck.shuffle
-    player.class.draw_index=0
-    player.cards=[]
-    dealer.cards=[]
+    player.class.draw_index = 0
+    player.cards = []
+    dealer.cards = []
   end
 
   def greeting
@@ -31,7 +31,7 @@ class Game
     # puts @dealer.inspect
   end
 
-  def choose
+  def choose # player doesn't have choose method (can't be game.player.choose), so it goes just to Game class
     menu = ["1. draw card", "2. skip", "3. open hand"]
     puts menu
     choice = gets.chomp
@@ -39,6 +39,8 @@ class Game
     case @choice
     when '1'
       player.draw_one(deck)
+      # sleep 2
+      dealer.make_turn(deck)
     when '2'
       puts "Dealer's turn"
       dealer.make_turn(deck)

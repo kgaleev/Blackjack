@@ -33,13 +33,13 @@ class Player
     self.balance+=10
   end
 
-  def intro #put into Game
-    if self.class == Player
-    puts "What's your name?"
-    name = gets.chomp
-    @name = name.capitalize
-    end
-  end
+  # def intro #put into Game
+  #   if self.class == Player
+  #   puts "What's your name?"
+  #   name = gets.chomp
+  #   @name = name.capitalize
+  #   end
+  # end
 
   def draw_two(deck_object) #get 2 cards
     2.times do draw_one(deck_object)
@@ -50,13 +50,17 @@ class Player
   def draw_one(deck_object) #get 1 card #change all_cards to deck and vise versa
     self.cards << deck_object.deck[self.class.draw_index]
     self.class.draw_index+=1
-  end
-
-  def current_score #method name and variable name should differ to not get stack level too deep
     self.scores = []
     cards.each do |card|
       self.scores << card.points
-    end
+      end
+  end
+
+  def current_score #method name and variable name should differ to not get stack level too deep
+    # self.scores = []
+    # cards.each do |card|
+    #   self.scores << card.points
+    # end
     while scores.sum > 21 && (scores.include? 11)
       self.scores[scores.index {|score| score == 11}] = 1
     end

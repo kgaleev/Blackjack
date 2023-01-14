@@ -43,6 +43,7 @@ require_relative 'card'
 
 game = Game.new
 game.greeting
+# loop do
 game.player.draw_two(game.deck)
 game.dealer.draw_two(game.deck)
 game.player.current_score
@@ -53,22 +54,26 @@ until game.choice.to_i == 3 || (game.player.cards.length == 3 && game.dealer.car
 game.choose
 end
 if game.player.cards.length == 3 && game.dealer.cards.length == 3
-  puts game.player.cards.inspect
-  puts game.dealer.cards.inspect
+  print "Player cards: "
+  game.player.cards.each {|card| print card.rank + card.suit + " "}
+  puts
+  print "Dealer cards: "
+  game.dealer.cards.each {|card| print card.rank + card.suit + " "}
+  puts
 end
 
 if game.player.current_score > game.dealer.current_score && game.player.current_score <= 21
-  puts "player wins"
+  puts "Player wins"
   game.player.win_bet
 elsif game.player.current_score < game.dealer.current_score && game.dealer.current_score <= 21
-  puts "dealer wins"
+  puts "Dealer wins"
   game.dealer.win_bet
 elsif game.player.current_score == game.dealer.current_score
-  puts 'tie ¯\_( ͡❛ ͜ʖ ͡❛)_/¯ land'
+  puts 'Tie ¯\_( ͡❛ ͜ʖ ͡❛)_/¯ land'
   game.player.draw_bet
   game.dealer.draw_bet
 else
-  puts "dealer wins"
+  puts "Dealer wins"
   game.dealer.win_bet
 end
 # binding.irb

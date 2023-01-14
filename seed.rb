@@ -43,7 +43,9 @@ require_relative 'card'
 
 game = Game.new
 game.greeting
-# loop do
+deck = game.deck
+loop do
+game.new_round
 game.player.draw_two(game.deck)
 game.dealer.draw_two(game.deck)
 game.player.current_score
@@ -75,6 +77,8 @@ elsif game.player.current_score == game.dealer.current_score
 else
   puts "Dealer wins"
   game.dealer.win_bet
+end
+break if game.player.balance < 10 || game.dealer.balance < 10
 end
 # binding.irb
 # game.choose

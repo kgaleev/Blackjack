@@ -13,6 +13,7 @@ class Game
     player.class.draw_index = 0
     player.cards = []
     dealer.cards = []
+    @choice = nil
   end
 
   def greeting

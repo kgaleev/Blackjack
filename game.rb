@@ -20,7 +20,7 @@ class Game
   def greeting
     puts "Welcome to the club, buddy!"
     puts "What's your name?"
-    name = gets.chomp
+    name = gets.chomp; puts
     @name = name.capitalize
   end
 
@@ -33,14 +33,17 @@ class Game
     # puts @dealer.inspect
   end
 
-  def choose # player doesn't have choose method (can't be game.player.choose), so it goes just to Game class
+  def choose # player doesn't have choose method (can't be game.player.choose), so it goes straight to the Game class
     menu = ["1. draw card", "2. skip", "3. open hand"]
+    puts "actions:"
     puts menu
-    choice = gets.chomp
+    choice = gets.chomp; puts
     @choice = choice
     case @choice
     when '1'
       player.draw_one(deck)
+      player.beautiful_cards
+      player.current_score
       # sleep 2
       dealer.make_turn(deck)
     when '2'
@@ -49,6 +52,7 @@ class Game
     when '3'
       player.beautiful_cards
       player.current_score
+      puts
       dealer.beautiful_cards
       dealer.current_score
       # puts player.cards.inspect
@@ -67,20 +71,35 @@ class Game
 
   def balance
     puts "#{player.name}'s balance: #{player.balance}"
-    puts "#{dealer.name}'s balance: #{dealer.balance}"
+    puts "#{dealer.name}'s balance: #{dealer.balance}"; puts
   end
 
-  def another_round
+  def another_round_menu
     menu = ["1. play again", "2. end game"]
+    puts "actions: "
     puts menu
-    answer = gets.chomp
+    answer = gets.chomp; puts
     @answer = answer
-    case answer
-    when "1"
-      new_round
-    when "2"
-      exit
-      # raise StandardError.new "Bye"
+    # until answer == "1" || answer == "2"
+    #   another_round
+    # end
+    # case answer
+    # when "1"
+    #   new_round
+    # when "2"
+    #   exit
+    # end
+
+    def another_round_loop
+      until answer == "1" || answer == "2"
+        another_round_menu
+      end
+      case answer
+      when "1"
+        new_round
+      when "2"
+        exit
+      end
     end
   end
 

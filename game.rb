@@ -47,7 +47,7 @@ class Game
       # sleep 2
       dealer.make_turn(deck)
     when '2'
-      puts "Dealer's turn"
+      puts "#{dealer.name}'s turn"
       dealer.make_turn(deck)
     when '3'
       player.beautiful_cards

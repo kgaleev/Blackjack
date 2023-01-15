@@ -46,12 +46,14 @@ game.greeting
 game.deck # needed for .shuffle to work in .new_round
 loop do
 game.new_round
-game.player.draw_two(game.deck)
-game.player.beautiful_cards
-game.dealer.draw_two(game.deck)
-game.player.current_score
 game.player.place_bet
 game.dealer.place_bet
+game.player.draw_two(game.deck)
+game.player.beautiful_cards
+game.player.current_score
+game.dealer.draw_two(game.deck)
+game.dealer.closed_cards
+
 # maybe loop with if is shorter, need to try
 until game.choice.to_i == 3 || (game.player.cards.length == 3 && game.dealer.cards.length == 3)
 game.choose
@@ -59,19 +61,22 @@ end
 if game.player.cards.length == 3 && game.dealer.cards.length == 3
   # print "Player cards: "
   game.player.beautiful_cards
+  game.player.current_score
   # game.player.cards.each {|card| print card.rank + card.suit + " "}; puts
   # print "Dealer cards: "
   game.dealer.beautiful_cards
+  game.dealer.current_score
   # game.dealer.cards.each {|card| print card.rank + card.suit + " "}; puts
 end
 
-if game.player.current_score > game.dealer.current_score && game.player.current_score <= 21
+# if game.player.current_score > game.dealer.current_score && game.player.current_score <= 21
+if game.player.scores.sum > game.dealer.scores.sum && game.player.scores.sum <= 21
   puts "Player wins"
   game.player.win_bet
-elsif game.player.current_score < game.dealer.current_score && game.dealer.current_score <= 21
+elsif game.player.scores.sum < game.dealer.scores.sum && game.dealer.scores.sum <= 21
   puts "Dealer wins"
   game.dealer.win_bet
-elsif game.player.current_score == game.dealer.current_score
+elsif game.player.scores.sum == game.dealer.scores.sum
   puts 'Tie ¯\_( ͡❛ ͜ʖ ͡❛)_/¯ land'
   game.player.draw_bet
   game.dealer.draw_bet
@@ -79,6 +84,7 @@ else
   puts "Dealer wins"
   game.dealer.win_bet
 end
+puts game.balance
 # binding.irb
 break if game.player.balance < 10 || game.dealer.balance < 10
 end

@@ -11,6 +11,12 @@ class Dealer < Player
     elsif scores.sum < 17
       puts "Dealer draws a card"
       draw_one(deck_object)
+      closed_cards
     end
+  end
+
+  def closed_cards
+    print "#{name}'s cards: "
+    cards.each {|card| print "*"}; puts
   end
 end

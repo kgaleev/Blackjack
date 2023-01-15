@@ -65,6 +65,7 @@ class Player
       self.scores[scores.index {|score| score == 11}] = 1
     end
     puts "#{name}'s scores: #{scores.sum}"
+    # scores.sum
   end
 
   def beautiful_cards

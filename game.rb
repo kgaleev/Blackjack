@@ -47,8 +47,13 @@ class Game
       puts "Dealer's turn"
       dealer.make_turn(deck)
     when '3'
-      puts player.cards.inspect
-      puts dealer.cards.inspect
+      player.beautiful_cards
+      player.current_score
+      dealer.beautiful_cards
+      dealer.current_score
+      # puts player.cards.inspect
+      # puts dealer.cards.inspect
+
     # when '1'
     #   draw_one(deck)
     # when '2'
@@ -58,6 +63,11 @@ class Game
     #   puts cards.inspect
     #   puts dealer.cards.inspect
     end
+  end
+
+  def balance
+    puts "#{player.name}'s balance: #{player.balance}"
+    puts "#{dealer.name}'s balance: #{dealer.balance}"
   end
 
 end

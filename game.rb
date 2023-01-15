@@ -9,6 +9,7 @@ class Game
   end
 
   def new_round
+    puts "New round"
     @deck.shuffle
     player.class.draw_index = 0
     player.cards = []

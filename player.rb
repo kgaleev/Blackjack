@@ -64,10 +64,11 @@ class Player
     while scores.sum > 21 && (scores.include? 11)
       self.scores[scores.index {|score| score == 11}] = 1
     end
-    scores.sum
+    puts "#{name}'s scores: #{scores.sum}"
   end
 
   def beautiful_cards
-    cards.each {|card| print card.rank + card.suit + " "}
+    print "#{name}'s cards: "
+    cards.each {|card| print card.rank + card.suit + " "}; puts
   end
 end

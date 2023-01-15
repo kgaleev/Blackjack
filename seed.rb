@@ -47,6 +47,7 @@ game.deck # needed for .shuffle to work in .new_round
 loop do
 game.new_round
 game.player.draw_two(game.deck)
+game.player.beautiful_cards
 game.dealer.draw_two(game.deck)
 game.player.current_score
 game.player.place_bet
@@ -56,11 +57,11 @@ until game.choice.to_i == 3 || (game.player.cards.length == 3 && game.dealer.car
 game.choose
 end
 if game.player.cards.length == 3 && game.dealer.cards.length == 3
-  print "Player cards: "
-  game.player.beautiful_cards; puts
+  # print "Player cards: "
+  game.player.beautiful_cards
   # game.player.cards.each {|card| print card.rank + card.suit + " "}; puts
-  print "Dealer cards: "
-  game.dealer.beautiful_cards; puts
+  # print "Dealer cards: "
+  game.dealer.beautiful_cards
   # game.dealer.cards.each {|card| print card.rank + card.suit + " "}; puts
 end
 

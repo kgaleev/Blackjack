@@ -2,7 +2,7 @@
 
 class Game
 
-  attr_reader :name, :choice
+  attr_reader :name, :choice, :answer
 
   def deck
     @deck ||= Deck.new # need only one deck
@@ -68,6 +68,20 @@ class Game
   def balance
     puts "#{player.name}'s balance: #{player.balance}"
     puts "#{dealer.name}'s balance: #{dealer.balance}"
+  end
+
+  def another_round
+    menu = ["1. play again", "2. end game"]
+    puts menu
+    answer = gets.chomp
+    @answer = answer
+    case answer
+    when "1"
+      new_round
+    when "2"
+      exit
+      # raise StandardError.new "Bye"
+    end
   end
 
 end

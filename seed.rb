@@ -45,8 +45,8 @@ game = Game.new
 game.greeting
 game.balance
 game.deck # needed for .shuffle to work in .new_round
-loop do
 game.new_round
+loop do
 game.player.place_bet
 game.dealer.place_bet
 game.player.draw_two(game.deck)
@@ -87,6 +87,11 @@ else
 end
 game.balance
 # binding.irb
+if game.player.balance == 0
+  puts "-===≡≡≡( ͝° ͜ʖ͡°) Game over"
+end
+game.another_round
+# add return
 break if game.player.balance < 10 || game.dealer.balance < 10
 end
 # binding.irb

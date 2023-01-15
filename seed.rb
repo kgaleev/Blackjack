@@ -43,7 +43,7 @@ require_relative 'card'
 
 game = Game.new
 game.greeting
-deck = game.deck
+game.deck # needed for .shuffle to work in .new_round
 loop do
 game.new_round
 game.player.draw_two(game.deck)
@@ -57,11 +57,11 @@ game.choose
 end
 if game.player.cards.length == 3 && game.dealer.cards.length == 3
   print "Player cards: "
-  game.player.cards.each {|card| print card.rank + card.suit + " "}
-  puts
+  game.player.beautiful_cards; puts
+  # game.player.cards.each {|card| print card.rank + card.suit + " "}; puts
   print "Dealer cards: "
-  game.dealer.cards.each {|card| print card.rank + card.suit + " "}
-  puts
+  game.dealer.beautiful_cards; puts
+  # game.dealer.cards.each {|card| print card.rank + card.suit + " "}; puts
 end
 
 if game.player.current_score > game.dealer.current_score && game.player.current_score <= 21
@@ -78,6 +78,7 @@ else
   puts "Dealer wins"
   game.dealer.win_bet
 end
+# binding.irb
 break if game.player.balance < 10 || game.dealer.balance < 10
 end
 # binding.irb

@@ -13,7 +13,7 @@ class Game
     player.class.draw_index = 0
     player.cards = []
     dealer.cards = []
-    @choice = nil
+    @choice = nil # else @choice is saved from previous round and makes infinite loop
   end
 
   def greeting

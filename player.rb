@@ -66,4 +66,8 @@ class Player
     end
     scores.sum
   end
+
+  def beautiful_cards
+    cards.each {|card| print card.rank + card.suit + " "}
+  end
 end

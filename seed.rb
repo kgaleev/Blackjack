@@ -43,6 +43,7 @@ require_relative 'card'
 
 game = Game.new
 game.greeting
+game.balance
 game.deck # needed for .shuffle to work in .new_round
 loop do
 game.new_round
@@ -84,7 +85,7 @@ else
   puts "Dealer wins"
   game.dealer.win_bet
 end
-puts game.balance
+game.balance
 # binding.irb
 break if game.player.balance < 10 || game.dealer.balance < 10
 end

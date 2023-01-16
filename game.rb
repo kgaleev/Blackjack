@@ -89,7 +89,11 @@ class Game
       another_round_menu
     end
 
-    # if same method in unless: unless ... another_round_menu; end -- need break before 'end' to get out of the loop
+    # if same method with x=gets in unless and there's NO instance variable: until x == ... another_round_menu; end
+    # -- need break before 'end' to get out of the loop, else stuck in infinite loop with wrong x input from first cycle
+
+    # if same method with x=gets in unless and there IS instance variable: until @x == ... another_round_menu; end
+    # -- don't need break before 'end' to get out of the loop, first cycle sees same @x as nested cycle
 
   end
 

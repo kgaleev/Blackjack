@@ -2,7 +2,7 @@
 
 class Game
 
-  attr_reader :name, :choice, :answer
+  attr_reader :name, :choice
 
   def deck
     @deck ||= Deck.new # need only one deck
@@ -79,29 +79,21 @@ class Game
     puts "actions: "
     puts menu
     answer = gets.chomp; puts
-    @answer = answer
-    # until answer == "1" || answer == "2"
-    #   another_round
-    # end
-    # case answer
-    # when "1"
-    #   new_round
-    # when "2"
-    #   exit
-    # end
 
-    def another_round_loop
-      until answer == "1" || answer == "2"
-        another_round_menu
-      end
-      case answer
-      when "1"
-        new_round
-      when "2"
-        exit
-      end
+    case answer
+    when "1"
+      new_round
+    when "2"
+      exit
+    else
+      another_round_menu
     end
+
+    # if same method in unless: unless ... another_round_menu; end -- need break before 'end' to get out of the loop
+
   end
+
+
 
 end
 

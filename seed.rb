@@ -102,12 +102,7 @@ elsif game.dealer.balance == 0
 end
 if game.player.balance != 0 && game.dealer.balance != 0
   game.another_round_menu
-  game.another_round_loop
 end
 break if game.player.balance < 10 || game.dealer.balance < 10
 end
-# binding.irb
-# game.choose
-# game.dealer.current_score
-
 # binding.irb

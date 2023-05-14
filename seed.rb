@@ -58,10 +58,10 @@ game.dealer.closed_cards
 puts
 
 # maybe loop with if is shorter, need to try
-until game.choice.to_i == 3 || (game.player.cards.length == 3 && game.dealer.cards.length == 3)
+until game.choice.to_i == 3 || game.player.cards.length == 3 # && game.dealer.cards.length == 3)
 game.choose; puts
 end
-if game.player.cards.length == 3 && game.dealer.cards.length == 3
+if game.player.cards.length == 3 # && game.dealer.cards.length == 3
   # print "Player cards: "
   game.player.beautiful_cards
   game.player.current_score
